@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IDRF Investigation Desk</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/chat.css">
+</head>
+<body>
+  <header class="masthead">
+    <div><p class="eyebrow">Investigative Dependency Reasoning Framework</p><h1>Investigation desk</h1><p class="lede">Evidence-led exploration of dependency structure and maintenance signals.</p></div>
+    <div class="masthead-controls">
+      <label class="experiment-picker">Experiment <select id="experiment-select"></select></label>
+      <button id="tour-start" class="chat-toggle" type="button" aria-haspopup="dialog">Take the 2-minute tour</button>
+      <button id="chat-toggle" class="chat-toggle" type="button" aria-expanded="true" aria-controls="chat-sidebar">Hide AI guide</button>
+    </div>
+  </header>
+  <main>
+    <div class="dashboard-content">
+    <section class="notice"><strong>Interpretation boundary</strong><span>IDRF surfaces patterns that may warrant investigation. It does not establish that a dependency is vulnerable, malicious, or unsafe.</span></section>
+    <section id="stats" class="stats" aria-label="Experiment overview"></section>
+    <section class="workspace-grid">
+      <div class="panel investigation-panel"><div class="panel-heading"><div><p class="eyebrow">Priority queue</p><h2>Dependency investigation</h2></div><span id="queue-count" class="muted"></span></div><div id="package-list" class="package-list"></div></div>
+      <aside class="panel detail-panel"><div class="panel-heading"><div><p class="eyebrow">Selected evidence</p><h2 id="selected-name">Choose a package</h2></div></div><div id="detail-content" class="empty-state">Select a surfaced dependency to inspect its evidence bundle.</div></aside>
+    </section>
+    <section class="panel graph-panel"><div class="panel-heading"><div><p class="eyebrow">Structural context</p><h2>Dependency graph</h2></div></div><p class="muted graph-guide">Arrows point from a package to a dependency. Color shows how many dependency steps it is from the project; larger nodes have a higher IDRF investigation score. Node size is a prioritization aid, not a measure of package quality.</p><img id="graph-image" alt="Dependency graph; node colors show dependency depth and node sizes show investigation score" hidden><p id="graph-empty" class="muted">Graph image unavailable for this experiment.</p><p class="muted graph-legacy-note">Graph images saved before score-weighted sizing was added keep constant node sizes. Rerun an analysis to regenerate those images.</p></section>
+    <section class="panel"><div class="panel-heading"><div><p class="eyebrow">Descriptive comparison</p><h2>Across experiments</h2></div></div><div class="table-wrap"><table><thead><tr><th>Experiment</th><th>Packages</th><th>Insights</th><th>Mean depth (hops)</th><th>Max priority (/100)</th></tr></thead><tbody id="comparison-body"></tbody></table></div></section>
+    <section class="panel methodology"><p class="eyebrow">Research method</p><h2>How IDRF reasons</h2><div class="method-grid"><p data-tour="extract"><b>01 Start with a dependency file</b> Choose a requirements.txt file listing the Python packages the project depends on.</p><p data-tour="metadata"><b>02 Enrich package details</b> Read dependency metadata from PyPI (the Python Package Index, where Python projects publish and share packages) and supplementary public GitHub repository signals.</p><p><b>03 Map the connections</b> Build a bounded dependency graph and calculate structural measurements.</p><p><b>04 Prioritize for review</b> Combine six weighted signals into the Investigative Priority Score (IPS), then surface evidence-backed candidates.</p></div></section>
+    </div>
+    <div id="chat-splitter" class="chat-splitter" role="separator" aria-label="Resize AI guide panel" aria-orientation="vertical" aria-controls="chat-sidebar" aria-valuemin="280" aria-valuemax="640" aria-valuenow="360" tabindex="0"></div>
+    <aside id="chat-sidebar" class="chat-sidebar" aria-label="AI results guide">
+      <div class="chat-sidebar-heading">
+        <div><p class="eyebrow">Ask about this experiment</p><h2>AI results guide</h2></div>
+        <div class="chat-sidebar-actions"><button id="chat-reset" class="chat-reset" type="button" title="Clear conversation">New chat</button><button id="chat-close" class="chat-reset chat-close" type="button" aria-label="Close AI guide">×</button></div>
+      </div>
+      <p class="muted chat-disclaimer">Ask about scores, measurements, packages, or the graph. The guide uses this experiment’s data; it cannot run analysis or change files. Its answers are not security verdicts.</p>
+      <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"><p class="chat-empty">Try asking: “What does a score of 70 mean?” or “Which result should I look at first?”</p></div>
+      <p id="chat-status" class="muted chat-status" aria-live="polite"></p>
+      <form id="chat-form" class="chat-form">
+        <label class="sr-only" for="chat-input">Ask a question about the experiment</label>
+        <textarea id="chat-input" rows="2" maxlength="2000" placeholder="Ask a question about these results..." required></textarea>
+        <button class="explain-btn" id="chat-submit" type="submit">Ask</button>
+      </form>
+      <p class="muted chat-disclaimer">Your question and this experiment’s result data are sent to Groq to generate a reply.</p>
+    </aside>
+  </main>
+  <div id="tour-spotlight" class="tour-spotlight" hidden aria-hidden="true"></div>
+  <section id="tour-card" class="tour-card" role="dialog" aria-modal="true" aria-labelledby="tour-title" aria-describedby="tour-description" hidden>
+    <div class="tour-card-heading"><p id="tour-step" class="eyebrow"></p><button id="tour-dismiss" class="chat-reset" type="button" aria-label="Close tour">×</button></div>
+    <h2 id="tour-title"></h2>
+    <p id="tour-description"></p>
+    <div class="tour-actions"><button id="tour-skip" class="chat-reset" type="button">Skip tour</button><div><button id="tour-previous" class="chat-reset" type="button">Back</button><button id="tour-next" class="explain-btn" type="button">Next</button></div></div>
+  </section>
+  <script src="/app.js"></script>
+</body>
+</html>
