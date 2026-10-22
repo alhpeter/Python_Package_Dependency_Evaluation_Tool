@@ -1,0 +1,17 @@
+streamlit
+altair
+blinker
+cachetools
+click
+numpy
+packaging
+pandas
+pillow
+protobuf
+pyarrow
+requests
+rich
+tenacity
+toml
+tornado
+watchdog

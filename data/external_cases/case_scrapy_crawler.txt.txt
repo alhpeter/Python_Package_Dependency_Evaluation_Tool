@@ -1,0 +1,13 @@
+scrapy
+twisted
+cryptography
+cssselect
+itemloaders
+parsel
+protego
+pyopenssl
+queuelib
+service-identity
+w3lib
+zope-interface
+lxml

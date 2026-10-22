@@ -1,0 +1,7 @@
+flask
+werkzeug
+jinja2
+itsdangerous
+click
+blinker
+markupsafe

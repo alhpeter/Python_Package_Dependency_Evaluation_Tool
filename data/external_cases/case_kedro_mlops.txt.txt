@@ -1,0 +1,16 @@
+kedro
+attrs
+build
+click
+cookiecutter
+dynaconf
+fsspec
+gitpython
+importlib-metadata
+omegaconf
+parse
+pluggy
+pyyaml
+rich
+rope
+toml

@@ -1,0 +1,10 @@
+celery
+kombu
+billiard
+vine
+click
+click-didyoumean
+click-repl
+python-dateutil
+amqp
+tzdata

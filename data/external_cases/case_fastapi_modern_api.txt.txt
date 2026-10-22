@@ -1,0 +1,9 @@
+fastapi
+starlette
+pydantic
+typing-extensions
+anyio
+uvicorn
+h11
+sniffio
+idna

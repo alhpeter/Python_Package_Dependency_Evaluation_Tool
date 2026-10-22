@@ -1,0 +1,16 @@
+prefect
+aiosqlite
+alembic
+apprise
+asyncpg
+click
+cryptography
+docker
+httpx
+jinja2
+pendulum
+pydantic
+rich
+sqlalchemy
+typer
+uvicorn
